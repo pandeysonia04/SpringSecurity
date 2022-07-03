@@ -1,0 +1,20 @@
+jwt:
+  security: '''Bhhdjkj37862ck38p[5[][u8r43n,nywu4ke8748kv'''
+  
+spring:
+  datasource:
+    password: soni12345
+    url: jdbc:mysql://localhost:3306/SpringSecurity
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+    show-sql: true
+    
+    
+server:
+  port: 9091
+  
