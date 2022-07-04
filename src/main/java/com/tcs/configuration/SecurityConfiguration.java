@@ -67,9 +67,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
 
 	} 
 	
+	@SuppressWarnings("deprecation")
 	@Bean
 	@Override
-	protected AuthenticationManager authenticationManager() throws Exception {
+	public AuthenticationManager authenticationManagerBean() throws Exception {
     return super.authenticationManagerBean();
     
 	}

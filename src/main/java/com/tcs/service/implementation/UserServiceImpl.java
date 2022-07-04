@@ -21,6 +21,7 @@ import com.tcs.domain.Users;
 import com.tcs.enumeration.Role;
 import com.tcs.exceptions.EmailExistsException;
 import com.tcs.exceptions.UserNameExistsException;
+import com.tcs.exceptions.UserNotFoundException;
 import com.tcs.repository.UserRepository;
 import com.tcs.service.UserService;
 
@@ -61,7 +62,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	}
 	
 	@Override
-	public Users register(String firstName, String lastName, String userName, String email,String password) throws UserNameExistsException, EmailExistsException, UsernameNotFoundException{
+	public Users register(String firstName, String lastName, String userName, String email,String password) throws UserNameExistsException, EmailExistsException, UsernameNotFoundException, UserNotFoundException{
 		validateNewUserNameAndEmail(StringUtils.EMPTY,userName , email);
 		Users user= new Users();
 		user.setUserId(generateUserId());
@@ -95,9 +96,9 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		return RandomStringUtils.randomNumeric(10);
 	}
 
-	private Users validateNewUserNameAndEmail(String currentUserName, String newUserName, String email) throws UserNameExistsException, EmailExistsException {
+	private Users validateNewUserNameAndEmail(String currentUserName, String newUserName, String email) throws UserNameExistsException, EmailExistsException,UserNotFoundException {
 		Users userByNewUserName= findByUserName(newUserName);
-		Users userByNewEmail= findByUserName(email);
+		Users userByNewEmail= findByEmail(email);
 		if(StringUtils.isNotBlank(currentUserName)) {
 			Users currentUser= findByUserName(currentUserName);
 			if(currentUser==null) {
@@ -108,7 +109,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 				throw new UserNameExistsException(USER_NAME_ALREADY_EXISTS);
 			}
 			
-			if(userByNewEmail!=null && !currentUser.getId().equals(userByNewEmail.getId())) {
+			if(userByNewEmail!=null && !currentUser.getEmail().equals(userByNewEmail.getEmail())) {
 				throw new EmailExistsException(EMAIL_ALREADY_EXISTS);
 			}
 			return currentUser;
@@ -126,7 +127,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 			return null;
 		}
 		}
-		
+
 
 
 	@Override

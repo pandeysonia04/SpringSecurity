@@ -7,10 +7,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.tcs.domain.Users;
 import com.tcs.exceptions.EmailExistsException;
 import com.tcs.exceptions.UserNameExistsException;
+import com.tcs.exceptions.UserNotFoundException;
 
 public interface UserService {
 
-	Users register(String firstName, String lastName, String userName, String email, String password)throws UserNameExistsException, EmailExistsException, UsernameNotFoundException;
+	Users register(String firstName, String lastName, String userName, String email, String password)throws UserNameExistsException, EmailExistsException, UsernameNotFoundException,UserNotFoundException;
  
 	List<Users> getUsers();
  
