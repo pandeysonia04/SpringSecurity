@@ -14,11 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.web.client.HttpClientErrorException.Unauthorized;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcs.domain.HttpResponse;
 
+@Component
 public class JWTAccessDeniedHandler implements AccessDeniedHandler {
 
 	@Override

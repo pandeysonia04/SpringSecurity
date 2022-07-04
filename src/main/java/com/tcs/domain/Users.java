@@ -28,8 +28,8 @@ public class Users implements Serializable{
 	private Date lastLoginDate;
 	private Date lastLoginDateDisplay;
 	private Date joinDate;
-	private String[] roles;
-	private String[] authorities;
+	private String roles;
+	private String[] authorities; 
 	private boolean isActive;
 	private boolean isNotLocked;
 	
@@ -39,7 +39,7 @@ public class Users implements Serializable{
 	//parameterized constructor
 	public Users(Long id, String userId, String firstName, String lastName, String userName, String password,
 			String email, String profileImageUrl, Date lastLoginDate, Date lastLoginDateDisplay, Date joinDate,
-			String[] roles, String[] authorities, boolean isActive, boolean isNotLocked) {
+			String roles, String[] authorities, boolean isActive, boolean isNotLocked) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -125,10 +125,10 @@ public class Users implements Serializable{
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
-	public String[] getRoles() {
+	public String getRoles() {
 		return roles;
 	}
-	public void setRoles(String[] roles) {
+	public void setRoles(String roles) {
 		this.roles = roles;
 	}
 	public String[] getAuthorities() {
